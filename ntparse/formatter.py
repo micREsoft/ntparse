@@ -61,7 +61,7 @@ def to_asm(syscalls: Dict[str, int], output_file: TextIO = None) -> str:
         ""
     ]
     # sort syscalls by number
-    sorted_offsets = sorted(offsets.items(), key=lambda x: int(x[1].replace('0h', ''), 16))
+    sorted_offsets = sorted(offsets.items(), key=lambda x: int(x[1].replace('h', ''), 16))
     for func_name, hex_offset in sorted_offsets:
         # create assembly stub using hex offset
         asm_lines.extend([

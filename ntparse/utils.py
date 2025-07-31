@@ -121,13 +121,13 @@ def get_offsets(syscalls: Dict[str, int]) -> Dict[str, str]:
     return offsets
 
 def get_asm_offsets(syscalls: Dict[str, int]) -> Dict[str, str]:
-    # convert decimal syscall numbers to hexadecimal offsets
+    # convert decimal syscall numbers to hexadecimal offsets for assembly
     # args: syscalls: dictionary of syscall names to decimal numbers
     # returns: dictionary mapping function names to hexadecimal offset strings
     offsets = {}
     for func_name, syscall_num in syscalls.items():
-        # convert decimal to hex offset (e.g., 70 -> "0x46")
-        hex_offset = f"0h{syscall_num:02X}"
+        # convert decimal to hex offset (e.g., 70 -> "046h")
+        hex_offset = f"{syscall_num:02X}h"
         offsets[func_name] = hex_offset
     return offsets
 
