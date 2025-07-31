@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ntparse"
+version = "0.1.0"
+description = "A lightweight Python package for parsing syscalls from ntdll.dll"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "micREsoft", email = "contact@reverseengineeri.ng"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Operating System",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "pefile>=2023.2.7",
+    "capstone>=4.0.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+]
+
+[project.scripts]
+ntparse = "ntparse.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/micREsoft/ntparse"
+Repository = "https://github.com/micREsoft/ntparse"
+Issues = "https://github.com/micREsoft/ntparse/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.black]
+line-length = 88
+target-version = ['py37']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=ntparse --cov-report=term-missing" 
