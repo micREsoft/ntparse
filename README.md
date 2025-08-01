@@ -141,7 +141,7 @@ NtCreateFile, 85, 0x55
 
 NtClose PROC
     mov r10, rcx
-    mov eax. 0Fh
+    mov eax, 0Fh
     syscall
     ret
 NtClose ENDP
